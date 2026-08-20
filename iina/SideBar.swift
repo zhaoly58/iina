@@ -58,6 +58,9 @@ class SideBarContainer: TranslucentView {
   @MainActor required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
+
+  override func rightMouseDown(with event: NSEvent) {}
+  override func rightMouseUp(with event: NSEvent) {}
 }
 
 
