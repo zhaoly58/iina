@@ -577,6 +577,16 @@ struct SettingsItem {
       return self
     }
 
+    func bindToSorted<T>(_ key: Preference.Key, ofType t: T.Type) -> Self
+    where T: RawRepresentable & CaseIterable & InitializingFromKey & Comparable, T.RawValue == Int
+    {
+      self.key = key
+      for c in t.allCases.sorted() {
+        valueTypes.append((c.rawValue, String(describing: c)))
+      }
+      return self
+    }
+
     func bindToCustom<T>(type t: T.Type, block: @escaping (NSPopUpButton) -> Void) -> Self
     where T: RawRepresentable & CaseIterable & InitializingFromKey, T.RawValue == Int
     {
@@ -822,6 +832,7 @@ struct SettingsItem {
     private var customBindingBlock: ((NSTextField) -> Void)?
     private var isLongText = false
     private var range: ClosedRange<Double>?
+    private var allowsFloats = false
 
     private var cachedStepperValue: Double?
     private var stepper: NSStepper?
@@ -853,8 +864,9 @@ struct SettingsItem {
       return self
     }
 
-    func range(_ range: ClosedRange<Double>) -> Self {
+    func range(_ range: ClosedRange<Double>, allowsFloats: Bool = false) -> Self {
       self.range = range
+      self.allowsFloats = allowsFloats
       return self
     }
 
@@ -875,9 +887,11 @@ struct SettingsItem {
       setControlSize(textField)
       if let range {
         let formatter = NumberFormatter()
+        formatter.allowsFloats = allowsFloats
         formatter.usesGroupingSeparator = false
         formatter.minimum = NSNumber(value: range.lowerBound)
         formatter.maximum = NSNumber(value: range.upperBound)
+        formatter.numberStyle = .decimal
         textField.formatter = formatter
       }
       let stack = NSStackView(views: [textField])
@@ -923,11 +937,19 @@ struct SettingsItem {
     private var valueTypes: [(Int, String)] = []
     private var textField: NSTextField!
     private var trailingLabel: SettingsLocalization.Key?
+    private var range: ClosedRange<Double>?
+    private var allowsFloats = false
 
     private var customBindingInput = false
     private var customBindingBlockInput: ((NSTextField) -> Void)?
     private var customBindingSwitch = false
     private var customBindingBlockSwitch: ((NSSwitch) -> Void)?
+
+    func range(_ range: ClosedRange<Double>, allowsFloats: Bool = false) -> Self {
+      self.range = range
+      self.allowsFloats = allowsFloats
+      return self
+    }
 
     override func getValueViews() -> [NSView] {
       nsSwitch = NSSwitch()
@@ -940,6 +962,15 @@ struct SettingsItem {
       textField.bezelStyle = .roundedBezel
       textField.size(width: 64)
       setControlSize(textField)
+      if let range {
+        let formatter = NumberFormatter()
+        formatter.allowsFloats = allowsFloats
+        formatter.usesGroupingSeparator = false
+        formatter.minimum = NSNumber(value: range.lowerBound)
+        formatter.maximum = NSNumber(value: range.upperBound)
+        formatter.numberStyle = .decimal
+        textField.formatter = formatter
+      }
       if let trailingLabel {
         let label = NSTextField(labelWithString: ui.localized(trailingLabel))
         setControlSize(label)

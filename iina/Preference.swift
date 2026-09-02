@@ -256,7 +256,8 @@ struct Preference {
 
     static let enableCache = Key("enableCache")
     static let defaultCacheSize = Key("defaultCacheSize")
-    static let cacheBufferSize = Key("cacheBufferSize")
+    static let cachePauseInitial = Key("cachePauseInitial")
+    static let cachePauseWait = Key("cachePauseWait")
     static let secPrefech = Key("secPrefech")
     static let showBufferingThrobber = Key("showBufferingThrobber")
     static let showSeekingThrobber = Key("showSeekingThrobber")
@@ -820,7 +821,7 @@ struct Preference {
     case hide
     case minimize
 
-    static var defaultValue = WindowBehaviorWhenPip.doNothing
+    static var defaultValue = WindowBehaviorWhenPip.hide
 
     init?(key: Key) {
       self.init(rawValue: Preference.integer(for: key))
@@ -1106,7 +1107,7 @@ struct Preference {
     .musicModeShowAlbumArt: true,
     .displayTimeAndBatteryInFullScreen: false,
 
-    .windowBehaviorWhenPip: WindowBehaviorWhenPip.doNothing.rawValue,
+    .windowBehaviorWhenPip: WindowBehaviorWhenPip.hide.rawValue,
     .pauseWhenPip: false,
     .togglePipByMinimizingWindow: false,
     .togglePipByMinimizingWindowForVideoOnly: false,
@@ -1117,8 +1118,8 @@ struct Preference {
     .dockedControlBarAndTitlebar: false,
 
     .sidebarSettingsDisplayAtLeading: false,
-    .sidebarPlaylistDisplayAtLeading: false,
-    .sidebarPluginsDisplayAtLeading: false,
+    .sidebarPlaylistDisplayAtLeading: true,
+    .sidebarPluginsDisplayAtLeading: true,
 
     .videoThreads: 0,
     .hardwareDecoder: HardwareDecoderOption.auto.rawValue,
@@ -1183,7 +1184,8 @@ struct Preference {
 
     .enableCache: true,
     .defaultCacheSize: 153600,
-    .cacheBufferSize: 153600,
+    .cachePauseInitial: false,
+    .cachePauseWait: Float(1),
     .secPrefech: 36000,
     .showBufferingThrobber: true,
     .showSeekingThrobber: true,
@@ -1293,6 +1295,11 @@ struct Preference {
     T.init(key: key) ?? T.defaultValue
   }
 
+  static func string<T: InitializingFromKey>(for key: Key, ofType t: T.Type) -> String {
+    let value: T = Preference.enum(for: key)
+    return String(describing: value)
+  }
+
   // MARK: - Logging
 
   /// Log the value of settings that have been changed from their default value.
@@ -1390,7 +1397,8 @@ struct Preference {
       case .arrowButtonAction:
         defaultAsString = String(describing: ArrowButtonAction.defaultValue)
         valueAsString = String(describing: Preference.enum(for: key) as ArrowButtonAction)
-      case .allowScreenSaverForAudio,
+      case .allowDuplicatePlayers,
+           .allowScreenSaverForAudio,
            .alwaysFloatOnTop,
            .alwaysOpenInNewWindow,
            .alwaysShowOnTopIcon,
@@ -1399,6 +1407,8 @@ struct Preference {
            .autoSearchOnlineSub,
            .autoSwitchToMusicMode,
            .blackOutMonitor,
+           .cachePauseInitial,
+           .compactUI,
            .controlBarStickToCenter,
            .disableAnimations,
            .disableOSDFileStartMsg,
@@ -1410,6 +1420,7 @@ struct Preference {
            .displayInLetterBox,
            .displayKeyBindingRawValues,
            .displayTimeAndBatteryInFullScreen,
+           .edgeToEdgeVideo,
            .enableAdvancedSettings,
            .enableCache,
            .enableCmdN,
@@ -1419,6 +1430,7 @@ struct Preference {
            .enableHdrSupport,
            .enableHdrWorkaround,
            .enableInitialVolume,
+           .enableLiveText,
            .enableLogging,
            .enableNowPlayingArtwork,
            .enableOSD,
@@ -1478,6 +1490,9 @@ struct Preference {
            .trackAllFilesInRecentOpenMenu,
            .useAppleRemote,
            .useLegacyFullScreen,
+           .useLiquidGlassOSC,
+           .useLiquidGlassOSD,
+           .useLiquidGlassSidebar,
            .useMediaKeys,
            .useMpvOsd,
            .usePhysicalResolution,
@@ -1495,7 +1510,8 @@ struct Preference {
       case .defaultRepeatMode:
         defaultAsString = String(describing: DefaultRepeatMode.defaultValue)
         valueAsString = String(describing: Preference.enum(for: key) as DefaultRepeatMode)
-      case .controlBarAutoHideTimeout,
+      case .cachePauseWait,
+           .controlBarAutoHideTimeout,
            .controlBarPositionHorizontal,
            .controlBarPositionVertical,
            .osdAutoHideTimeout,

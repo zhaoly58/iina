@@ -128,6 +128,7 @@
 		519872FF26879B9B00F84BCC /* AccessibilityPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519872FE26879B9B00F84BCC /* AccessibilityPreferences.swift */; };
 		519CCABD2BFFAEF10079DCAF /* HardwareDecodeCapabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519CCABC2BFFAEF10079DCAF /* HardwareDecodeCapabilities.swift */; };
 		51AC1CAB2A9FBF3700DF7079 /* OpenSubClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AC1CAA2A9FBF3700DF7079 /* OpenSubClient.swift */; };
+		51BDDFB3301E97EE00E249CE /* CommonWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BDDFB2301E97EE00E249CE /* CommonWindow.swift */; };
 		51C1BA3A291CA76700C1208A /* InfoDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C1BA39291CA76700C1208A /* InfoDictionary.swift */; };
 		51C889D52C42FF7F007B2584 /* PlayerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C889D42C42FF7F007B2584 /* PlayerState.swift */; };
 		51CA83E22E35AD6300A44B22 /* MPVAudioDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CA83E12E35AD6300A44B22 /* MPVAudioDevice.swift */; };
@@ -273,7 +274,6 @@
 		E31E62FD2FD8F4C9005527B2 /* OSCBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31E62FC2FD8F4C5005527B2 /* OSCBottomView.swift */; };
 		E31E62FF2FD90288005527B2 /* OSCFloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31E62FE2FD90284005527B2 /* OSCFloatingView.swift */; };
 		E31E63012FDB96F0005527B2 /* FadeableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31E63002FDB96E9005527B2 /* FadeableViewController.swift */; };
-		E322A4F820A8442E00C67D32 /* PlaylistPlaybackProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E322A4F720A8442E00C67D32 /* PlaylistPlaybackProgressView.swift */; };
 		E32693F924BA138000BF7ADC /* JavascriptPluginSubtitleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32693F824BA138000BF7ADC /* JavascriptPluginSubtitleItem.swift */; };
 		E32712B024EAA14500359DAB /* ScreenshootOSDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32712AE24EAA14500359DAB /* ScreenshootOSDView.swift */; };
 		E32712B224F2B8CA00359DAB /* ScreenshootOSDView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E32712B424F2B8CA00359DAB /* ScreenshootOSDView.xib */; };
@@ -1050,6 +1050,7 @@
 		519CCABC2BFFAEF10079DCAF /* HardwareDecodeCapabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HardwareDecodeCapabilities.swift; sourceTree = "<group>"; };
 		51A0F0F629FA2C8E000130CF /* Beta.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
 		51AC1CAA2A9FBF3700DF7079 /* OpenSubClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenSubClient.swift; sourceTree = "<group>"; };
+		51BDDFB2301E97EE00E249CE /* CommonWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonWindow.swift; sourceTree = "<group>"; };
 		51C1BA39291CA76700C1208A /* InfoDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoDictionary.swift; sourceTree = "<group>"; };
 		51C3ED782C234BFA004546F9 /* imgutils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = imgutils.h; sourceTree = "<group>"; };
 		51C889D42C42FF7F007B2584 /* PlayerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerState.swift; sourceTree = "<group>"; };
@@ -1601,7 +1602,6 @@
 		E31E62FC2FD8F4C5005527B2 /* OSCBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSCBottomView.swift; sourceTree = "<group>"; };
 		E31E62FE2FD90284005527B2 /* OSCFloatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSCFloatingView.swift; sourceTree = "<group>"; };
 		E31E63002FDB96E9005527B2 /* FadeableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadeableViewController.swift; sourceTree = "<group>"; };
-		E322A4F720A8442E00C67D32 /* PlaylistPlaybackProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistPlaybackProgressView.swift; sourceTree = "<group>"; };
 		E32693F824BA138000BF7ADC /* JavascriptPluginSubtitleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavascriptPluginSubtitleItem.swift; sourceTree = "<group>"; };
 		E32712AE24EAA14500359DAB /* ScreenshootOSDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshootOSDView.swift; sourceTree = "<group>"; };
 		E32712B324F2B8CA00359DAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ScreenshootOSDView.xib; sourceTree = "<group>"; };
@@ -2114,6 +2114,7 @@
 		84A0BAA31D2FAEA000BC8DA1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				51BDDFB2301E97EE00E249CE /* CommonWindow.swift */,
 				E31E62FA2FD38516005527B2 /* LayoutValue.swift */,
 				84A0BA931D2F9E9600BC8DA1 /* MainMenu.xib */,
 				E38BD4AE20054BD9007635FC /* MainWindow.swift */,
@@ -2326,7 +2327,6 @@
 				84C6445F1E92BA2700B1410B /* TimeLabelOverflowedView.swift */,
 				841B14271E941DFF00744AB8 /* TimeLabelOverflowedStackView.swift */,
 				840D479F1DFEFC49000D9A64 /* KeyRecordView.swift */,
-				E322A4F720A8442E00C67D32 /* PlaylistPlaybackProgressView.swift */,
 				845E70B1210CB59D00D06C42 /* ScrollingTextField.swift */,
 				E38372912443634500F57718 /* LanguageTokenField.swift */,
 				E32712AE24EAA14500359DAB /* ScreenshootOSDView.swift */,
@@ -2935,7 +2935,6 @@
 				E3C2280D2FDFBE30009A1A89 /* SidebarSliderView.swift in Sources */,
 				840D47A01DFEFC49000D9A64 /* KeyRecordView.swift in Sources */,
 				84791C8B1D405E9D0069E28A /* PlaybackInfo.swift in Sources */,
-				E322A4F820A8442E00C67D32 /* PlaylistPlaybackProgressView.swift in Sources */,
 				84D123B41ECAA405004E0D53 /* TouchBarSupport.swift in Sources */,
 				E36E8D7C24F6052F00B8C097 /* GuideWindowController.swift in Sources */,
 				84817C981DBDCE4300CC2279 /* RoundedColorWell.swift in Sources */,
@@ -2959,6 +2958,7 @@
 				34C4D19C2FC58482006B829F /* LiveTextSupport.swift in Sources */,
 				511BF43E2E1305C800E9721E /* MiniPlaySlider.swift in Sources */,
 				E34BC2AC2C27DAE900A94680 /* SettingsHelper.swift in Sources */,
+				51BDDFB3301E97EE00E249CE /* CommonWindow.swift in Sources */,
 				842904E21F0EC01600478376 /* AutoFileMatcher.swift in Sources */,
 				8466BE181D5CDD0300039D03 /* QuickSettingViewController.swift in Sources */,
 				84A0BA9E1D2FAD4000BC8DA1 /* MainWindowController.swift in Sources */,

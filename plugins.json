@@ -102,6 +102,12 @@
     "id": "com.danialabdoli.playlistpro"
   },
   {
+    "name": "Playlist Searchbox",
+    "url": "https://github.com/icsarisakal/iina-playlist-searchbox",
+    "desc": "Search the current playlist by song title and artist.",
+    "id": "com.icsarisakal.iina-searchbox"
+  },
+  {
     "name": "PolyScript",
     "url": "https://github.com/SammoMichael/polyplugin-release",
     "desc": "Dual subtitles, hover dictionary, and AI-assisted translation for language learning.",
@@ -120,10 +126,10 @@
     "id": "com.pparanoiidd.skipintro"
   },
   {
-    "name": "SubLingo",
-    "url": "https://github.com/janwee-sha/SubLingo",
+    "name": "SubTandem",
+    "url": "https://github.com/janwee-sha/SubTandem",
     "desc": "Translates the selected local embedded text subtitle or external SRT/ASS subtitle and renders translated subtitles itself in IINA.",
-    "id": "io.sublingo.iina"
+    "id": "io.subtandem.iina"
   },
   {
     "name": "Trakt Scrobbler",
