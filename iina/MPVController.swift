@@ -479,8 +479,6 @@ class MPVController: NSObject {
 
     setUserOption(PK.subTextColorString, type: .color, forName: MPVOption.Subtitles.subColor,
                   verboseIfDefault: true)
-    setUserOption(PK.subBgColorString, type: .color, forName: MPVOption.Subtitles.subBackColor,
-                  verboseIfDefault: true)
 
     setUserOption(PK.subBold, type: .bool, forName: MPVOption.Subtitles.subBold,
                   verboseIfDefault: true)
@@ -501,6 +499,11 @@ class MPVController: NSObject {
                   verboseIfDefault: true)
     setUserOption(PK.subShadowColorString, type: .color, forName: MPVOption.Subtitles.subBackColor,
                   verboseIfDefault: true)
+
+    setUserOption(PK.subBorderStyle, type: .other, forName: MPVOption.Subtitles.subBorderStyle,
+                  verboseIfDefault: true) { key in
+      String(describing: Preference.enum(for: key) as Preference.SubBorderStyle)
+    }
 
     setUserOption(PK.subAlignX, type: .other, forName: MPVOption.Subtitles.subAlignX,
                   verboseIfDefault: true) { key in
@@ -871,6 +874,16 @@ class MPVController: NSObject {
   @discardableResult
   func setString(_ name: String, _ value: String, level: Logger.Level = .debug) -> Int32 {
     log("Set property: \(name)=\(value)", level: level)
+    return mpv_set_property_string(mpv, name, value)
+  }
+
+  @discardableResult
+  func setStringToDefault(_ name: String, level: Logger.Level = .debug) -> Int32 {
+    guard let value = MPVOptionDefaults.shared.getString(name) else {
+      log("Failed to obtain default for option: \(name)", level: .error)
+      return MPV_ERROR_OPTION_NOT_FOUND.rawValue
+    }
+    log("Set property to default: \(name)=\(value)", level: level)
     return mpv_set_property_string(mpv, name, value)
   }
 
