@@ -100,10 +100,12 @@ IINA is always looking for contributions, whether it's through bug reports, code
 - **[User Scripts](https://github.com/iina/plugin-userscript)** (`iina/plugin-userscript`) - Run custom JavaScript snippets.
 
 ### Community Plugins
+- **[AirPlay](https://github.com/ozykhan/iina-airplay)** (`ozykhan/iina-airplay`) - Cast the current file to an Apple TV over AirPlay; IINA stays the remote.
 - **[Anime4K](https://github.com/yorkyang2333/iina-anime4k)** (`yorkyang2333/iina-anime4k`) - Apply Anime4K shaders for real-time anime upscaling.
 - **[Auto Skip](https://github.com/pangziqiang/iina-auto-skip)** (`pangziqiang/iina-auto-skip`) - Automatically skip intro and outro sections with visual drag-to-set overlay.
 - **[Bilingual Audio](https://github.com/glechic/iina-bilingual-audio)** (`glechic/iina-bilingual-audio`) - Play two audio tracks with left/right channel separation for bilingual viewing.
 - **[Bookmarks](https://github.com/wyattowalsh/iina-plugin-bookmarks)** (`wyattowalsh/iina-plugin-bookmarks`) - Save and manage video timestamps.
+- **[CineMode](https://github.com/D0CA/iina-cinemode)** (`D0CA/iina-cinemode`) - Fullscreen pause overlay and skip intro; optional Stremio next-episode shortcut.
 - **[Clickable Subtitles](https://github.com/kerim/iina-clickable-subtitles)** (`kerim/iina-clickable-subtitles`) - Click subtitles to define words (macOS Look Up).
 - **[Danmaku](https://github.com/xjbeta/iina-plugin-danmaku)** (`xjbeta/iina-plugin-danmaku`) - Overlay comments/danmaku on video.
 - **[Danmaku Cosmos](https://github.com/karappo-yu/iina-plugin-danmaku-cosmos)** (`karappo-yu/iina-plugin-danmaku-cosmos`) - Niconico/Bilibili danmaku with CSS/Canvas dual rendering, Comment Art support.

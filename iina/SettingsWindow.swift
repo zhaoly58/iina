@@ -172,6 +172,7 @@ class SettingsWindow: CommonWindow {
 
     // Add the sidebar and content view controllers to the split view
     let sidebarSplitItem = NSSplitViewItem(sidebarWithViewController: sidebarViewController)
+    sidebarSplitItem.maximumThickness = 200
     sidebarSplitItem.minimumThickness = 200
     sidebarSplitItem.canCollapse = false
     splitViewController.addSplitViewItem(sidebarSplitItem)
@@ -185,7 +186,6 @@ class SettingsWindow: CommonWindow {
 
     self.title = "Settings"
     self.isOpaque = false
-    self.isMovableByWindowBackground = true
     self.titlebarAppearsTransparent = true
     self.toolbarStyle = .unified
     let toolbar = NSToolbar(identifier: "SettingsWindowToolbar")
